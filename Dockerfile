@@ -1,4 +1,4 @@
-FROM ros:galactic-ros-base 
+FROM ros:rolling-ros-base 
 
 ARG USERNAME=ros
 ARG USER_UID=1000
