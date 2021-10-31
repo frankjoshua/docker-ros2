@@ -6,6 +6,7 @@ on:
   push:
     branches:
       - master
+      - main
   schedule:
     # Run once a month
     - cron: '1 2 3 * *'
