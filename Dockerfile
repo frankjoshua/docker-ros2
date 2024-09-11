@@ -12,5 +12,6 @@ FROM ros:jazzy-ros-base
 #    && rm -rf /var/lib/apt/lists/*
 # ENV DEBIAN_FRONTEND=dialog
 
+RUN echo "source /opt/ros/$ROS_DISTRO/setup.bash" >> /root/.bashrc
 
 CMD ["ros2 topic list"]
