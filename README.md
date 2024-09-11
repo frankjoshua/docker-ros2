@@ -8,8 +8,34 @@ Base image that most of my ROS2 Docker containers are based one.
 
 ```
 docker run -it \
-    --network="host" \
+    --network=host \
+    --ipc=host \
+    --pid=host \
     frankjoshua/ros2
+```
+
+--ipc=host is required for shared memory access. --pid=host is recommended for unique guid for dds.
+
+Quick test:
+
+Run the following in one terminal:
+```
+docker run -it \
+--network="host" \
+--ipc=host \
+--pid=host \
+frankjoshua/ros2 \
+ros2 topic pub /test_topic std_msgs/msg/String 'data: "Hello, ROS 2!"'
+```
+
+Run the following in another terminal:
+```
+docker run -it \
+--network=host \
+--ipc=host \
+--pid=host \
+frankjoshua/ros2 \
+ros2 topic echo /test_topic
 ```
 
 ## Building
