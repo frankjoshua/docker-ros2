@@ -1,4 +1,4 @@
-FROM ros:jazzy-ros-base 
+FROM ros:humble-ros-base 
 
 # ** [Optional] Uncomment this section to install additional packages. **
 #
