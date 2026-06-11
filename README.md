@@ -1,8 +1,22 @@
-# ROS master in Docker [![](https://img.shields.io/docker/pulls/frankjoshua/ros2)](https://hub.docker.com/r/frankjoshua/ros2) [![CI](https://github.com/frankjoshua/docker-ros2/workflows/CI/badge.svg)](https://github.com/frankjoshua/docker-ros2/actions)
+# ROS master in Docker [![](https://img.shields.io/docker/pulls/frankjoshua/ros2)](https://hub.docker.com/r/frankjoshua/ros2)
 
 ## Description
 
 Base image that most of my ROS2 Docker containers are based one. 
+
+## Supported tags
+
+| Tag | ROS 2 Distro | Supported until |
+| --- | --- | --- |
+| `humble`, `latest` | Humble Hawksbill (LTS) | May 2027 |
+| `jazzy` | Jazzy Jalisco (LTS) | May 2029 |
+| `lyrical` | Lyrical Luth (LTS) | May 2031 |
+
+Only the currently supported LTS distros are built. Non-LTS distros (e.g. kilted) are skipped. `latest` points to `humble` — pin a distro tag in downstream images instead of relying on it:
+
+```
+FROM frankjoshua/ros2:humble
+```
 
 ## Example
 
@@ -40,12 +54,14 @@ ros2 topic echo /test_topic
 
 ## Building
 
-Use [build.sh](build.sh) to build the docker containers.
+Use [build.sh](build.sh) to build the docker containers. Select the ROS distro with `-d` (defaults to `humble`).
 
 <br>Local builds are as follows:
 
 ```
-./build.sh -t frankjoshua/ros2 -l
+./build.sh -t frankjoshua/ros2:humble -l
+./build.sh -t frankjoshua/ros2:jazzy -d jazzy -l
+./build.sh -t frankjoshua/ros2:lyrical -d lyrical -l
 ```
 
 ## Testing

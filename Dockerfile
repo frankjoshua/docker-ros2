@@ -1,4 +1,5 @@
-FROM ros:humble-ros-base 
+ARG ROS_DISTRO=humble
+FROM ros:${ROS_DISTRO}-ros-base
 
 # ** [Optional] Uncomment this section to install additional packages. **
 #
@@ -14,4 +15,4 @@ FROM ros:humble-ros-base
 
 RUN echo "source /opt/ros/$ROS_DISTRO/setup.bash" >> /root/.bashrc
 
-CMD ["ros2 topic list"]
+CMD ["ros2", "topic", "list"]
